@@ -17,11 +17,11 @@ export async function getUsers(req, res){
 // get : http://localhost:3000/api/users/1
 export async function getUser(req, res){
     try {
-        const { userId } = req.query;
+        const { userId } = req.query
 
         if(userId){
             const user = await Users.findById(userId);
-            res.status(200).json(user)
+            return res.status(200).json(user)
         }
         res.status(404).json({ error : "User not Selected...!"});
     } catch (error) {
@@ -50,7 +50,7 @@ export async function putUser(req, res){
 
         if(userId && formData){
             const user = await Users.findByIdAndUpdate(userId, formData);
-            res.status(200).json(user)
+            return res.status(200).json(user)
         }
         res.status(404).json( { error: "User Not Selected...!"})
     } catch (error) {
